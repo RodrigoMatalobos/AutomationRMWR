@@ -1,0 +1,22 @@
+{
+  "name": "ejercicio-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RodrigoMatalobos/Ejercicio-Automation.git"
+  },
+  "author": "Rodrigo Matalobos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RodrigoMatalobos/Ejercicio-Automation/issues"
+  },
+  "homepage": "https://github.com/RodrigoMatalobos/Ejercicio-Automation#readme",
+  "dependencies": {
+    "cypress": "^10.0.3"
+  }
+}
