@@ -1,5 +1,8 @@
+import Login from '../../support/Page/login'
+
 describe('Sing in automation practice', () => {
   before( function() {
+    
   });
   beforeEach( function() {
     cy.visit('http://automationpractice.com')
@@ -22,8 +25,9 @@ describe('Sing in automation practice', () => {
   });
 
   it('Sing in pass', function() {
-    cy.get('.login').click();
-    cy.get('.page-heading').contains('Authentication').should('exist')
+    Login.clickButton();
+
+   /* cy.get('.page-heading').contains('Authentication').should('exist')
     // Choose form sing up
     cy.get('form[id="create-account_form"]').within(() => {
       // Add email
@@ -34,7 +38,7 @@ describe('Sing in automation practice', () => {
     // verify change off screen
     cy.get('.page-heading').contains('Create an account')
     // get personal information form
-
+ */
 })
 
 })
