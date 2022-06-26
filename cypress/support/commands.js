@@ -23,3 +23,20 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// Comando para realizar de forma aleatoria mails.
+Cypress.Commands.add('userRandomizer', () => {
+    // Leo el archivo userSing
+    cy.readFile("cypress/fixtures/userSign.json", (data) => {
+    //si es invalido lanzo un error.
+        if (err) {
+            return console.error(err);
+        };
+    // Lo tomo y genero una cadena numerica random para la selección de un email.
+    }).then((data) => {
+        const uuid = () => Cypress._.random(0, 1e7)
+        const id = uuid()
+        data.email = (`${id}@testrmmail.com`)      
+        cy.writeFile("cypress/fixtures/userSign.json", JSON.stringify(data))
+    })
+});
