@@ -3,9 +3,9 @@ describe('Sign in automation practice', () => {
   
 	beforeEach(function() {
       cy.visit('/')
-      cy.readFile('cypress/fixtures/homePage.json').then((homePage) => {this.homePage = homePage})
-      cy.readFile('cypress/fixtures/authentication.json').then((authentication) => {this.authentication = authentication})
-      cy.readFile('cypress/fixtures/accountCreation.json').then((accountCreation) => {this.accountCreation = accountCreation})
+      cy.readFile('cypress/fixtures/pages/homePage.json').then((homePage) => {this.homePage = homePage})
+      cy.readFile('cypress/fixtures/pages/authentication.json').then((authentication) => {this.authentication = authentication})
+      cy.readFile('cypress/fixtures/pages/accountCreation.json').then((accountCreation) => {this.accountCreation = accountCreation})
       cy.randomEmail().then((email) => {this.email= email})
 		})
   
@@ -13,7 +13,7 @@ describe('Sign in automation practice', () => {
         // Estoy en Homepage
         cy.get(this.homePage.signInLink).click()
         // Estoy en authentication page
-       // cy.randomEmail().then(email => { cy.get(this.authentication.emailAddressField).type(email)}) 
+        // cy.randomEmail().then(email => { cy.get(this.authentication.emailAddressField).type(email)}) 
         cy.get(this.authentication.emailAddressField).type(this.email)
         cy.get(this.authentication.createAnAccountButton).click()
         // Estoy en accountCreation page
