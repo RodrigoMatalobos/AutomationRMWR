@@ -1,0 +1,4 @@
+{
+    "emailAddressField": "#email_create",
+    "createAnAccountButton": "#SubmitCreate > span"
+}
