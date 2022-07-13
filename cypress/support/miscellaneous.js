@@ -2,7 +2,7 @@
 
 export function randomEmail (filename) {
 
-        cy.fixture(filename).then((data) =>
+        cy.readFile("cypress/fixtures/"+filename+".json").then((data) =>
             {
             data.emailField = ("test"+(Cypress._.random(0, 1e7)).toString()+"@testautomation.com")
             cy.log(data.emailField)

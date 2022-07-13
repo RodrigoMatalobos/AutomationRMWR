@@ -29,8 +29,8 @@ Cypress.Commands.add('randomEmail', randomEmail);
 
 Cypress.Commands.add('signUpUser', (filename) => {
     
-    cy.readFile('cypress/fixtures/pages/accountCreation.json').then((element) => {
-        cy.readFile(filename).then((data) => {
+    cy.fixture('pages/accountCreation').then((element) => {
+        cy.fixture(filename).then((data) => {
             cy.get(element.mrRadioButton).should('be.visible').check()
             cy.get(element.firstNameField).type(data.firstNameField)
             cy.get(element.lastNameField).type(data.lastNameField)

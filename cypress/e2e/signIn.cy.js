@@ -16,7 +16,7 @@ describe('Sign in automation practice', () => {
             cy.get(this.authentication.emailAddressField).type(this.email)
             cy.get(this.authentication.createAnAccountButton).click()
             // Estoy en accountCreation page
-            cy.signUpUser('cypress/fixtures/data/dataSignIn.json')
+            cy.signUpUser('data/dataSignIn')
             cy.get(this.accountCreation.alertMessage).should('be.visible')
             cy.get(this.accountCreation.alertMessage).should('contain',"The Zip/Postal code you've entered is invalid. It must follow this format: 00000")
       })
