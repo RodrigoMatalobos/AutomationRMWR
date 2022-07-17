@@ -21,7 +21,8 @@ Fixtures data:
     - data generated on test should be updated on data file.  
 
 E2E test: 
-    - 
+    - Fixtures must be used when web elements are being read. 
+    - Writefile/Readfile must be used when data is being read.
 
 
 

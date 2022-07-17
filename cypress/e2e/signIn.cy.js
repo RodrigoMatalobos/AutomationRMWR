@@ -1,12 +1,12 @@
 
 describe('Sign in automation practice', () => {
-  
+ 
       beforeEach(function() {
             cy.visit('/')
-            cy.readFile('cypress/fixtures/pages/homePage.json').then((homePage) => {this.homePage = homePage})
-            cy.readFile('cypress/fixtures/pages/authentication.json').then((authentication) => {this.authentication = authentication})
-            cy.readFile('cypress/fixtures/pages/accountCreation.json').then((accountCreation) => {this.accountCreation = accountCreation})
-            cy.randomEmail('cypress/fixtures/data/dataSignIn.json').then((email) => {this.email= email})
+            cy.fixture('pages/accountCreation').then((accountCreation) => {this.accountCreation = accountCreation})
+            cy.fixture('pages/authentication').then((authentication) => {this.authentication = authentication})
+            cy.fixture('pages/homePage').then((homePage) => {this.homePage = homePage})
+            cy.randomEmail('data/dataSignIn').then((email) => {this.email= email})
 	})
   
       it('Perform a sign in', function() {
@@ -16,7 +16,7 @@ describe('Sign in automation practice', () => {
             cy.get(this.authentication.emailAddressField).type(this.email)
             cy.get(this.authentication.createAnAccountButton).click()
             // Estoy en accountCreation page
-            cy.signUpUser('cypress/fixtures/data/dataSignIn.json')
+            cy.signUpUser('data/dataSignIn')
             cy.get(this.accountCreation.alertMessage).should('be.visible')
             cy.get(this.accountCreation.alertMessage).should('contain',"The Zip/Postal code you've entered is invalid. It must follow this format: 00000")
       })
