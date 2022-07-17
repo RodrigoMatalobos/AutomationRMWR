@@ -1,36 +1,7 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-
-const { randomEmail } = require("./miscellaneous");
-Cypress.Commands.add('randomEmail', randomEmail);
-
 Cypress.Commands.add('signUpUser', (filename) => {
     
-    cy.fixture('pages/accountCreation').then((element) => {
-        cy.fixture(filename).then((data) => {
+    cy.readFile('cypress/fixtures/pages/accountCreation.json').then((element) => {
+        cy.readFile(filename).then((data) => {
             cy.get(element.mrRadioButton).should('be.visible').check()
             cy.get(element.firstNameField).type(data.firstNameField)
             cy.get(element.lastNameField).type(data.lastNameField)
@@ -56,3 +27,30 @@ Cypress.Commands.add('signUpUser', (filename) => {
         })
     });
 })
+
+Cypress.Commands.add('userWithoutFirstName', (filename) => {
+    cy.readFile(filename, (data) => {
+        if (err) {
+            return console.error(err);
+        };
+    }).then((data) => {
+        data.emailField = ("test"+(Cypress._.random(0, 1e7)).toString()+"@testautomation.com")
+        cy.log(data.emailField)
+        cy.writeFile(filename, JSON.stringify(data))
+        return cy.wrap(data.emailField);
+    })    
+});
+
+
+export function randomEmail (filename) {
+    cy.readFile(filename, (data) => {
+        if (err) {
+            return console.error(err);
+        };
+    }).then((data) => {
+        data.emailField = ("test"+(Cypress._.random(0, 1e7)).toString()+"@testautomation.com")
+        cy.log(data.emailField)
+        cy.writeFile(filename, JSON.stringify(data))
+        return cy.wrap(data.emailField);
+    })    
+}

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress open"
+    "test": "npx cypress open",
+    "cy:run": "cypress run"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "homepage": "https://github.com/RodrigoMatalobos/Ejercicio-Automation#readme",
   "dependencies": {
     "cypress": "^10.0.3"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.2.0"
   }
 }
