@@ -7,6 +7,8 @@ describe('Sign in automation practice', () => {
             cy.fixture('pages/authentication').then((authentication) => {this.authentication = authentication})
             cy.fixture('pages/homePage').then((homePage) => {this.homePage = homePage})
             cy.randomEmail('data/dataSignIn').then((email) => {this.email= email})
+            cy.changeElement('firstNameField', 'sarasita', 'data/dataSignIn')
+            cy.changeElement('addresFirstNameField', 'sarasita', 'data/dataSignIn')
 	})
   
       it('Perform a sign in', function() {

@@ -30,7 +30,7 @@ Cypress.Commands.add('randomEmail', randomEmail);
 Cypress.Commands.add('signUpUser', (filename) => {
     
     cy.fixture('pages/accountCreation').then((element) => {
-        cy.fixture(filename).then((data) => {
+        cy.readFile(`cypress/fixtures/${filename}.json`).then((data) => {
             cy.get(element.mrRadioButton).should('be.visible').check()
             cy.get(element.firstNameField).type(data.firstNameField)
             cy.get(element.lastNameField).type(data.lastNameField)
@@ -51,8 +51,16 @@ Cypress.Commands.add('signUpUser', (filename) => {
             cy.get(element.aditionalInformationField).type(data.aditionalInformationField)
             cy.get(element.homePhoneField).type(data.homePhoneField)
             cy.get(element.mobilePhoneField).type(data.mobilePhoneField)
-            cy.get(element.aliasAddressField).type(data.aliasAddressField)
+            cy.get(element.aliasAddressField).clear().type(data.aliasAddressField)
             cy.get(element.registerButton).click()
         })
     });
+})
+
+Cypress.Commands.add('changeElement', (path, information, fileName) => { 
+    cy.readFile(`cypress/fixtures/${fileName}.json`).then((data) =>
+    {
+        data[path] = information
+        cy.writeFile(`cypress/fixtures/${fileName}.json`, JSON.stringify(data))
+    })
 })
