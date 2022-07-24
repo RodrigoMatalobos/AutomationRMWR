@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress open",
-    "cy:run": "cypress run"
+    "cyopen": "npx cypress open",
+    "cyrun": "cypress run",
+    "cyrunspec": "cypress run --spec",
+    "cynovideo": "cypress run cypress run --config video=false --spec"
   },
   "repository": {
     "type": "git",
