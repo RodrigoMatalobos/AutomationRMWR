@@ -13,6 +13,5 @@ module.exports = defineConfig({
   },
   videosFolder: "results/videos",
   screenshotsFolder: "results/screenshots",
-  modifyObstructiveCode: false
 }
 });
