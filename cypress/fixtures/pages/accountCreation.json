@@ -1,6 +1,5 @@
 {
-    "mrRadioButton": "#id_gender1",
-    "mrsRadioButton": "#id_gender2",
+    "radioButton": ".radio-inline",
     "firstNameField":"#customer_firstname",
     "lastNameField":"#customer_lastname",
     "emailField": "#email",
