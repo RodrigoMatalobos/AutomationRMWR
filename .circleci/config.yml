@@ -8,4 +8,4 @@ workflows:
   build:
     jobs:
       - cypress/run:
-          store_artifacts: true
+          store_artifacts: false
